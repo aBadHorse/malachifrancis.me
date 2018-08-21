@@ -1,0 +1,72 @@
+.mf-navbar {
+  background-color: #4c5c68;
+  color: #dcdcdd;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mf-navbar > a {
+  color: #dcdcdd;
+}
+
+.mf-col {
+  padding: 0;
+}
+
+button.navbar-toggler {
+  color: #dcdcdd;
+}
+
+.mf-footer {
+  background-color: #4c5c68;
+  color: #dcdcdd;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mf-nav-item > a {
+  color: #dcdcdd;
+}
+
+.mf-nav-item.active > a {
+  color: white;
+  background-color: #c5c3c6;
+  font-weight: bold;
+  text-shadow: 0 0.05em 1.3em black;
+}
+
+.mf-sub-menu {
+  padding: 0 1em 0 1em;
+  background-color: #c5c3c6;
+  height: 2.5em;
+}
+
+.mf-sub-menu-item > a {
+  color: #4c5c68;
+  background-color: #c5c3c6;
+  text-shadow: 0 0.05em 1.3em white;
+}
+
+.mf-content-header {
+  background-image: linear-gradient(to right, #1985a1, white);
+  padding: .25em .5em .4em .5em;
+  color: white;
+}
+
+.mf-content {
+  color: #46494c;
+  padding: 0 1em 0 1em;
+  text-align: justify;
+}
+
+.display-1 {
+  color: #1985a1;
+}
+
+/*
+  #dcdcdd light gray
+  #c5c3c6 medium gray
+  #46494c dark gray
+  #4c5c68 dark blue
+  #1985a1 blue
+*/

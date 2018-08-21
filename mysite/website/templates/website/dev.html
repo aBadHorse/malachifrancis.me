@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block body_content %}
+  {% if content_list %}
+    {% for content in content_list %}
+      <h5>{{ content.title }}</h5>
+      <pre>{{ content.text }}</pre>
+      {% if content.image %}
+        <img class="img-fluid" src="{% static "website/"|add:content.image %}" alt="img not found">
+      {% endif %}
+      <hr>
+    {% endfor %}
+  {% else %}
+
+  {% endif %}
+{% endblock %}
