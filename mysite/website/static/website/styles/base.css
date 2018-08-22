@@ -30,6 +30,19 @@ button.navbar-toggler {
   color: #dcdcdd;
 }
 
+.mf-nav-item > a:hover {
+  text-shadow: 0 0 1em;
+}
+
+.mf-footer-nav-item > a {
+  color: #dcdcdd;
+}
+
+.mf-footer-nav-item > a:hover {
+  color: #2C565D;
+  text-shadow: 0 0 1em;
+}
+
 .mf-nav-item.active > a {
   color: white;
   background-color: #2C565D;
@@ -41,12 +54,19 @@ button.navbar-toggler {
   padding: 0 1em 0 1em;
   background-color: #2C565D;
   height: 2.5em;
+  transition: visibility 1s linear;
 }
 
 .mf-sub-menu-item > a {
   color: #4c5c68;
   background-color: #2C565D;
   text-shadow: 0 0.05em 1.3em white;
+}
+
+.mf-sub-menu-item > a:hover {
+  background-color: #2C565D;
+  color: white;
+  text-shadow: 0 0 1em;
 }
 
 /* CONTENT BODY */

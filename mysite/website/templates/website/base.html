@@ -22,13 +22,14 @@
 </head>
 
 <body>
+  <!--
   {% block banner %}
     <div class="jumbotron text-center" style="margin-bottom:0; padding-top:32px; padding-bottom:32px;">
       <h1 class="display-1">banner</h1>
       <h3 class="display-5" style="margin-bottom:0;"><small>placeholder</small></h3>
     </div>
   {% endblock %}
-
+  -->
   <nav class="navbar navbar-expand-sm sticky-top mf-navbar">
     <a class="navbar-brand" href="{% url 'website:home' %}"><i class="fa fa-home"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -47,7 +48,7 @@
     </div>
   </nav>
   {% if page_title != 'home' %}
-    <nav class="navbar navbar-expand-sm mf-sub-menu">
+    <nav class="navbar navbar-expand-sm mf-sub-menu d-none d-sm-block">
       <ul class="navbar-nav">
         {% block sub-menu %}
           <li class="nav-item mf-sub-menu-item">
@@ -70,31 +71,26 @@
   </div>
   {% block footer %}
     <nav class="navbar navbar-expand-sm fixed-bottom mf-footer">
-      <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#collapsibleFooter">
-        <i class="fa fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleFooter">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-          </li>
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-          </li>
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-youtube"></i></a>
-          </li>
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
-          </li>
-          <li class="nav-item mf-nav-item">
-            <a class="nav-link" href="http://malachifrancis.bandcamp.com"><i class="fa fa-bandcamp"></i></a>
-          </li>
-        </ul>
-      </div>
+      <ul class="navbar-nav mx-auto d-inline">
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
+        </li>
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
+        </li>
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="#"><i class="fa fa-youtube"></i></a>
+        </li>
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
+        </li>
+        <li class="nav-item mf-footer-nav-item mx-auto">
+          <a class="nav-link" href="http://malachifrancis.bandcamp.com"><i class="fa fa-music"></i></a>
+        </li>
+      </ul>
     </nav>
   {% endblock %}
 </body>

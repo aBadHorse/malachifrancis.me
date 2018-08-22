@@ -2,7 +2,19 @@
 {% load static %}
 
 {% block sub-menu %}
-
+  {{ block.super }}
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">photos</a>
+  </li>
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">digital</a>
+  </li>
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">irl</a>
+  </li>
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">guests</a>
+  </li>
 {% endblock %}
 
 {% block body_content %}

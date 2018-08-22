@@ -1,6 +1,16 @@
 {% extends './base.html' %}
 {% load static %}
 
+{% block sub-menu %}
+  {{ block.super }}
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">code</a>
+  </li>
+  <li class="nav-item mf-sub-menu-item">
+    <a class="nav-link" href="#">links</a>
+  </li>
+{% endblock %}
+
 {% block body_content %}
   {% if content_list %}
     {% for content in content_list %}

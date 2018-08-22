@@ -21,6 +21,17 @@
   background-image: linear-gradient(to right, #3E9099, #F8F4F7);
 }
 
+.mf-footer-nav-item > a:hover {
+  color: #83A993;
+  text-shadow: 0 0 1em;
+}
+
+.mf-sub-menu-item > a:hover {
+  background-color: #2C565D;
+  color: white;
+  text-shadow: 0 0 1em;
+}
+
 /*
   #dcdcdd light gray text
   #46494c dark gray  text
