@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" type="text/css" href="{% static '/website/styles/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/website/styles/'|add:page_style %}"
 </head>
 
 <body>
@@ -45,18 +46,19 @@
       </ul>
     </div>
   </nav>
+  {% if page_title != 'home' %}
+    <nav class="navbar navbar-expand-sm mf-sub-menu">
+      <ul class="navbar-nav">
+        {% block sub-menu %}
+          <li class="nav-item mf-sub-menu-item">
+            <a class="nav-link" href="#">recent</a>
+          </li>
+        {% endblock %}
+      </ul>
+    </nav>
+  {% endif %}
 
-  <nav class="navbar navbar-expand-sm mf-sub-menu">
-    <ul class="navbar-nav">
-      {% block sub-menu %}
-        <li class="nav-item mf-sub-menu-item">
-          <a class="nav-link" href="#">recent</a>
-        </li>
-      {% endblock %}
-    </ul>
-  </nav>
-
-  <div class="container" style="margin-top:30px">
+  <div class="container mf-container" style="margin-top:30px">
     <div class="row">
       <div class="col mf-col">
         {% block body_content %}

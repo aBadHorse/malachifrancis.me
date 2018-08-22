@@ -6,6 +6,7 @@ def home(request):
     nav_options = NavOption.objects.order_by('position')
     context = {
         'page_title': "home",
+        'page_style': "home.css",
         'nav_options': nav_options,
     }
     return render(request, 'website/home.html', context)
@@ -17,6 +18,7 @@ def about(request):
 
     context = {
         'page_title': "about me",
+        'page_style': "about.css",
         'nav_options': nav_options,
         'content_list': content_list,
     }
@@ -29,6 +31,7 @@ def dev(request):
 
     context = {
         'page_title': "dev",
+        'page_style': "dev.css",
         'nav_options': nav_options,
         'content_list': content_list,
     }
@@ -41,7 +44,21 @@ def music(request):
 
     context = {
         'page_title': "music",
+        'page_style': "music.css",
         'nav_options': nav_options,
         'content_list': content_list,
     }
-    return render(request, 'website/about.html', context)
+    return render(request, 'website/music.html', context)
+
+
+def art(request):
+    nav_options = NavOption.objects.order_by('position')
+    content_list = Content.objects.filter(category__name='art').order_by('-date')
+
+    context = {
+        'page_title': "art",
+        'page_style': "art.css",
+        'nav_options': nav_options,
+        'content_list': content_list,
+    }
+    return render(request, 'website/art.html', context)
