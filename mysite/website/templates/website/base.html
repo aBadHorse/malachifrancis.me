@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ page_title }}{% endblock %}</title>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Popper JS -->
@@ -15,10 +16,13 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" type="text/css" href="{% static '/website/styles/base.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static '/website/styles/'|add:page_style %}"
+  <link rel="stylesheet" type="text/css"
+      href="{% static '/website/styles/base.css' %}">
+  <link rel="stylesheet" type="text/css"
+      href="{% static '/website/styles/'|add:page_style %}"
 </head>
 
 <body>
@@ -31,8 +35,11 @@
   {% endblock %}
   -->
   <nav class="navbar navbar-expand-sm sticky-top mf-navbar">
-    <a class="navbar-brand" href="{% url 'website:home' %}"><i class="fa fa-home"></i></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <a class="navbar-brand" href="{% url 'website:home' %}">
+      <i class="fa fa-home"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#collapsibleNavbar">
       <i class="fa fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -89,7 +96,9 @@
         <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
       </li>
       <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="http://malachifrancis.bandcamp.com"><i class="fa fa-music"></i></a>
+        <a class="nav-link" href="http://malachifrancis.bandcamp.com">
+          <i class="fa fa-music"></i>
+        </a>
       </li>
     </ul>
   </nav>

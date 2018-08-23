@@ -32,10 +32,12 @@
   text-shadow: 0 0 1em;
 }
 
+/*
 .mf-content {
   font-family: "Courier New", monospace;
   white-space: pre;
 }
+*/
 
 .mf-hr {
   background-color: #CD8B50;
