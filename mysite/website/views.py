@@ -1,64 +1,54 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.views import View
 
-from .models import Content, NavOption
-# Create your views here.
-def home(request):
+from .models import Content, NavOption, MenuOption
+from .forms import LoginForm
+
+class BaseView(View):
     nav_options = NavOption.objects.order_by('position')
-    context = {
-        'page_title': "home",
-        'page_style': "home.css",
-        'nav_options': nav_options,
-    }
-    return render(request, 'website/home.html', context)
+    template_name = 'website/content-list.html'
+
+    def get(self, request):
+        context = {
+            'content_list': self.content_list,
+            'menu_options': self.menu_options,
+            'page_style': self.page_style,
+            'page_title': self.page_title,
+            'nav_options': self.nav_options,
+        }
+        return render(request, self.template_name, context)
 
 
-def about(request):
-    nav_options = NavOption.objects.order_by('position')
+class AboutView(BaseView):
     content_list = Content.objects.filter(category__name='about me').order_by('-date')
-
-    context = {
-        'page_title': "about me",
-        'page_style': "about.css",
-        'nav_options': nav_options,
-        'content_list': content_list,
-    }
-    return render(request, 'website/about.html', context)
+    menu_options = MenuOption.objects.filter(category__name='about me').order_by('position')
+    page_style = 'about.css'
+    page_title = 'about me'
 
 
-def dev(request):
-    nav_options = NavOption.objects.order_by('position')
-    content_list = Content.objects.filter(category__name='dev').order_by('-date')
-
-    context = {
-        'page_title': "dev",
-        'page_style': "dev.css",
-        'nav_options': nav_options,
-        'content_list': content_list,
-    }
-    return render(request, 'website/dev.html', context)
-
-
-def music(request):
-    nav_options = NavOption.objects.order_by('position')
-    content_list = Content.objects.filter(category__name='music').order_by('-date')
-
-    context = {
-        'page_title': "music",
-        'page_style': "music.css",
-        'nav_options': nav_options,
-        'content_list': content_list,
-    }
-    return render(request, 'website/music.html', context)
-
-
-def art(request):
-    nav_options = NavOption.objects.order_by('position')
+class ArtView(BaseView):
     content_list = Content.objects.filter(category__name='art').order_by('-date')
+    menu_options = MenuOption.objects.filter(category__name='art').order_by('position')
+    page_style = 'art.css'
+    page_title = 'art'
 
-    context = {
-        'page_title': "art",
-        'page_style': "art.css",
-        'nav_options': nav_options,
-        'content_list': content_list,
-    }
-    return render(request, 'website/art.html', context)
+
+class DevView(BaseView):
+    content_list = Content.objects.filter(category__name='dev').order_by('-date')
+    menu_options = MenuOption.objects.filter(category__name='dev').order_by('position')
+    page_style = 'dev.css'
+    page_title = 'dev'
+
+
+class HomeView(BaseView):
+    content_list = Content.objects.all().order_by('-date')[:5]
+    menu_options = None
+    page_style = 'home.css'
+    page_title = 'home'
+
+
+class MusicView(BaseView):
+    content_list = Content.objects.filter(category__name='music').order_by('-date')
+    menu_options = MenuOption.objects.filter(category__name='music').order_by('position')
+    page_style = 'music.css'
+    page_title = 'music'

@@ -43,13 +43,6 @@ button.navbar-toggler {
   text-shadow: 0 0 1em;
 }
 
-.mf-nav-item.active > a {
-  color: white;
-  background-color: #2C565D;
-  font-weight: bold;
-  text-shadow: 0 0.05em 1.3em black;
-}
-
 .mf-sub-menu {
   padding: 0 1em 0 1em;
   background-color: #2C565D;
@@ -86,6 +79,11 @@ body {
 .mf-content-header {
   padding: .25em .5em .4em .5em;
   color: white;
+}
+
+.mf-hr {
+  background-color: #2C565D;
+  height: .15em;
 }
 
 /*

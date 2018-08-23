@@ -18,7 +18,7 @@
 }
 
 .mf-content-header {
-  background-image: linear-gradient(to right, #CD8B50, white);
+  background-image: linear-gradient(to right, #CD8B50, #F8F4F7);
 }
 
 .mf-footer-nav-item > a:hover {
@@ -30,6 +30,16 @@
   background-color: #CD8B50;
   color: white;
   text-shadow: 0 0 1em;
+}
+
+.mf-content {
+  font-family: "Courier New", monospace;
+  white-space: pre;
+}
+
+.mf-hr {
+  background-color: #CD8B50;
+  height: .15em;
 }
 
 /*

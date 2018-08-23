@@ -47,16 +47,18 @@
       </ul>
     </div>
   </nav>
-  {% if page_title != 'home' %}
-    <nav class="navbar navbar-expand-sm mf-sub-menu d-none d-sm-block">
+  {% if menu_options %}
+    <nav class="navbar navbar-expand mf-sub-menu d-none d-sm-block">
       <ul class="navbar-nav">
-        {% block sub-menu %}
+        {% for option in menu_options %}
           <li class="nav-item mf-sub-menu-item">
-            <a class="nav-link" href="#">recent</a>
+            <a class="nav-link" href="#">{{ option.name }}</a>
           </li>
-        {% endblock %}
+        {% endfor %}
       </ul>
     </nav>
+  {% else %}
+    <div class="mf-hr"></div>
   {% endif %}
 
   <div class="container mf-container" style="margin-top:30px">
@@ -69,29 +71,27 @@
       </div>
     </div>
   </div>
-  {% block footer %}
-    <nav class="navbar navbar-expand-sm fixed-bottom mf-footer">
-      <ul class="navbar-nav mx-auto d-inline">
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-        </li>
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-        </li>
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-        </li>
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="#"><i class="fa fa-youtube"></i></a>
-        </li>
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
-        </li>
-        <li class="nav-item mf-footer-nav-item mx-auto">
-          <a class="nav-link" href="http://malachifrancis.bandcamp.com"><i class="fa fa-music"></i></a>
-        </li>
-      </ul>
-    </nav>
-  {% endblock %}
+  <nav class="navbar navbar-expand fixed-bottom mf-footer">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="#"><i class="fa fa-youtube"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="http://malachifrancis.bandcamp.com"><i class="fa fa-music"></i></a>
+      </li>
+    </ul>
+  </nav>
 </body>
 </html>

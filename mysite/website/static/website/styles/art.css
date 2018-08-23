@@ -54,6 +54,11 @@ body {
   text-shadow: 0 0 1em;
 }
 
+.mf-hr {
+  background-color: #D6C882;
+  height: .15em;
+}
+
 /*
   #dcdcdd light gray text
   #46494c dark gray  text

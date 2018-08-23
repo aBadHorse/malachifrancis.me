@@ -32,6 +32,11 @@
   text-shadow: 0 0 1em;
 }
 
+.mf-hr {
+  background-color: #2C565D;
+  height: .15em;
+}
+
 /*
   #dcdcdd light gray text
   #46494c dark gray  text
