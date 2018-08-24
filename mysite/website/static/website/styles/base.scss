@@ -1,0 +1,109 @@
+@import 'variables.scss';
+
+body {
+  background-color: $off_white;
+}
+
+button.navbar-toggler {
+  color: $light_text;
+}
+
+.mf-code {
+  font-family: "Courier New", monospace;
+  white-space: pre;
+}
+
+.mf-col {
+  padding: 0;
+}
+
+.mf-container {
+  background-color: $off_white;
+}
+
+.mf-content {
+  color: $dark_text;
+  padding: 0 1em 0 1em;
+  text-align: justify;
+}
+
+.mf-content-brief {
+  color: $dark_text;
+  padding: 0 1em 0 1em;
+  text-align: justify;
+}
+
+.mf-content-footer {
+  color: $dark_text;
+  padding: 0 1em 0 1em;
+  text-align: justify;
+}
+
+.mf-content-header {
+  padding: .25em .5em .4em .5em;
+  color: white;
+}
+
+.mf-footer {
+  background-color: $dark_blue;
+  color: $light_text;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mf-footer-nav-item > a {
+  color: $light_text;
+
+  &:hover {
+    color: $medium_blue;
+    text-shadow: 0 0 1em;
+  }
+}
+
+.mf-hr {
+  background-color: $medium_blue;
+  height: .15em;
+}
+
+.mf-navbar {
+  background-color: $dark_blue;
+  color: $light_text;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mf-navbar > a {
+  color: $light_text;
+
+  &:hover {
+    color: white;
+    text-shadow: 0 0 1em;
+  }
+}
+
+.mf-nav-item > a {
+  color: $light_text;
+
+  &:hover {
+    color: white;
+    text-shadow: 0 0 1em;
+  }
+}
+
+.mf-sub-menu {
+  padding: 0 1em 0 1em;
+  background-color: $medium_blue;
+  height: 2.5em;
+  transition: visibility 1s linear;
+}
+
+.mf-sub-menu-item > a {
+  color: $light_text;
+  background-color: $medium_blue;
+  text-shadow: 0 0.05em 1.3em white;
+
+  &:hover {
+    color: white;
+    text-shadow: 0 0 1em;
+  }
+}

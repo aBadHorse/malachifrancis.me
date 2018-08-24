@@ -1,0 +1,57 @@
+@import 'variables.scss';
+
+.mf-container {
+  background-color: $off_white;
+}
+
+.mf-content {
+  color: $dark_text;
+}
+
+.mf-content-brief {
+  color: $dark_text;
+}
+
+.mf-content-footer {
+  color: $dark_text;
+  font-style: italic;
+  text-align: center;
+}
+
+.mf-content-header {
+  background-image: linear-gradient(to right, $medium_blue, $off_white);
+}
+
+.mf-footer-nav-item > a:hover {
+  color: $medium_blue;
+  text-shadow: 0 0 1em;
+}
+
+.mf-hr {
+  background-color: $medium_blue;
+  height: .15em;
+}
+
+.mf-nav-item.active > a {
+  color: white;
+  background-color: $medium_blue;
+  font-weight: bold;
+  text-shadow: 0 0.05em 1.3em black;
+}
+
+.mf-sub-menu {
+  padding: 0 1em 0 1em;
+  background-color: $medium_blue;
+  height: 2.5em;
+}
+
+.mf-sub-menu-item > a {
+  color: $light_text;
+  background-color: $medium_blue;
+  text-shadow: 0 0.05em 1.3em black;
+
+  &:hover {
+    color: white;
+    text-shadow: 0 0 1em;
+  }
+}

@@ -22,33 +22,33 @@ class BaseView(View):
 class AboutView(BaseView):
     content_list = Content.objects.filter(category__name='about me').order_by('-date')
     menu_options = MenuOption.objects.filter(category__name='about me').order_by('position')
-    page_style = 'about.css'
+    page_style = 'about.min.css'
     page_title = 'about me'
 
 
 class ArtView(BaseView):
     content_list = Content.objects.filter(category__name='art').order_by('-date')
     menu_options = MenuOption.objects.filter(category__name='art').order_by('position')
-    page_style = 'art.css'
+    page_style = 'art.min.css'
     page_title = 'art'
 
 
 class DevView(BaseView):
     content_list = Content.objects.filter(category__name='dev').order_by('-date')
     menu_options = MenuOption.objects.filter(category__name='dev').order_by('position')
-    page_style = 'dev.css'
+    page_style = 'dev.min.css'
     page_title = 'dev'
 
 
 class HomeView(BaseView):
     content_list = Content.objects.all().order_by('-date')[:5]
     menu_options = None
-    page_style = 'home.css'
+    page_style = 'home.min.css'
     page_title = 'home'
 
 
 class MusicView(BaseView):
     content_list = Content.objects.filter(category__name='music').order_by('-date')
     menu_options = MenuOption.objects.filter(category__name='music').order_by('position')
-    page_style = 'music.css'
+    page_style = 'music.min.css'
     page_title = 'music'
