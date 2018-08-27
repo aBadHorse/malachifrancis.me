@@ -53,6 +53,62 @@
         {% endblock %}
       </ul>
     </div>
+    {% if user.is_authenticated %}
+      <div class="mf-nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+          Welcome, {{ user.username }}!
+        </a>
+        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">account</a>
+          <a class="dropdown-item" href="{% url 'website:logout' %}">logout</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="mf-nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+          Welcome, Guest!
+        </a>
+        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="{% url 'website:login' %}">login</a>
+          <a class="dropdown-item" href="#">register</a>
+        </div>
+      </div>
+    {% endif %}
+    <!--
+    {% if user.is_authenticated %}
+      <div class="mf-nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+          Welcome, {{ user.username }}!
+        </a>
+        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">account</a>
+          <a class="dropdown-item" href="{% url 'website:logout' %}">logout</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="mf-nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+          Welcome, Guest!
+        </a>
+        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'website:login' %}">login</a>
+          <a class="dropdown-item" href="#">register</a>
+        </div>
+      </div>
+    {% endif %}
+  -->
   </nav>
   {% if menu_options %}
     <nav class="navbar navbar-expand mf-sub-menu d-none d-sm-block">
