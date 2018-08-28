@@ -25,7 +25,9 @@ SECRET_KEY = 'ydfttnfc_6iee91v7!crvhg1q3z6@=ixk$(n_*9rd7v!fmst#3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'www.malachifrancis.me',
+]
 
 
 # Application definition
