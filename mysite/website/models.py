@@ -15,6 +15,7 @@ class MenuOption(models.Model):
     category = models.ForeignKey('NavOption', on_delete=models.PROTECT)
     name = models.CharField(max_length=15, verbose_name='display name')
     position = models.IntegerField()
+    perm_req = models.IntegerField(verbose_name='permission level required')
 
     def __str__(self):
         return self.name
@@ -28,6 +29,7 @@ class Content(models.Model):
     footer = models.TextField(verbose_name='footer text', blank=True, null=True)
     date = models.DateField(verbose_name='publish date')
     image = models.CharField(max_length=31, verbose_name='image name', blank=True, null=True)
+    embed = models.CharField(max_length=127, verbose_name='embed url', blank=True, null=True)
 
     def __str__(self):
         return self.title

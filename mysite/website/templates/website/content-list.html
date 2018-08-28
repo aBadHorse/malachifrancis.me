@@ -11,11 +11,20 @@
             src="{% static 'website/'|add:content.image %}"
             alt="img not found">
       {% endif %}
-      <p class="mf-content {% if content.category.name == 'dev' %}mf-code{% endif %}">{{ content.text }}</p>
+      {% if content.category.name == 'dev' %}
+        <div class="container">
+          <pre class="mf-content">{{ content.text }}</pre>
+        </div>
+      {% else %}
+        <p class="mf-content">{{ content.text }}</p>
+      {% endif %}
       <footer class="mf-content-footer">{{ content.footer }}</footer>
       <hr>
     {% endfor %}
   {% else %}
-
+    <h5 class="mf-content-header">Oops! There's nothing here right now...</h5>
+    <p class="mf-content-brief">So here's some lorem for your enjoyment!</p>
+    <p class="mf-content">{% lorem %}</p>
+    <p class="mf-content-footer">Ya'll come back now, ya'hear!</p>
   {% endif %}
 {% endblock %}
