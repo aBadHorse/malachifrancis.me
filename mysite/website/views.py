@@ -1,8 +1,11 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.views import View
+from django.views.generic import CreateView
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
-from .models import Content, NavOption, MenuOption
-from .forms import LoginForm
+from .models import Content, NavOption, MenuOption, User
+from .forms import LoginForm, RegisterUserForm
 
 class BaseView(View):
     nav_options = NavOption.objects.order_by('position')
@@ -52,3 +55,10 @@ class MusicView(BaseView):
     menu_options = MenuOption.objects.filter(category__name='music').order_by('position')
     page_style = 'music.min.css'
     page_title = 'music'
+
+
+class RegisterUserView(CreateView):
+    model = User
+    form_class = RegisterUserForm
+    success_url = 'website:home'
+    template_name = 'website/register.html'

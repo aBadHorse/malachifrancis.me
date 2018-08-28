@@ -1,6 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+#TODO add user specific flags and fields to User
+class User(AbstractUser):
+    perm = models.IntegerField(default=1, verbose_name='permission level')
+
+    def __str__(self):
+        return self.email
+
+
 class NavOption(models.Model):
     name = models.CharField(max_length=15, verbose_name='display name')
     path = models.CharField(max_length=127, verbose_name='URL pattern')
