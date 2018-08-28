@@ -108,3 +108,13 @@ button.navbar-toggler {
     text-shadow: 0 0 1em;
   }
 }
+
+.navbar-brand {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .dropdown-menu-right {
+    transform: translate(45%);
+  }
+}

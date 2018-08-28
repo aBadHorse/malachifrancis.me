@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'www.malachifrancis.me',
+    'localhost',
 ]
 
 

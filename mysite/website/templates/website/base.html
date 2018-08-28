@@ -34,15 +34,15 @@
     </div>
   {% endblock %}
   -->
-  <nav class="navbar navbar-expand-sm sticky-top mf-navbar">
-    <a class="navbar-brand" href="{% url 'website:home' %}">
+  <nav class="navbar navbar-expand-sm sticky-top mf-navbar justify-content-between">
+    <a class="navbar-brand order-0 mr-sm-3" href="{% url 'website:home' %}">
       <i class="fa fa-home"></i>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    <button class="navbar-toggler order-2 px-0" type="button" data-toggle="collapse"
         data-target="#collapsibleNavbar">
       <i class="fa fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse order-2 order-sm-1" id="collapsibleNavbar">
       <ul class="navbar-nav">
         {% block nav %}
           {% for option in nav_options %}
@@ -54,27 +54,27 @@
       </ul>
     </div>
     {% if user.is_authenticated %}
-      <div class="mf-nav-item dropdown">
-        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+      <div class="mf-nav-item dropdown order-1 order-sm-2">
+        <a class="dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
           Welcome, {{ user.username }}!
         </a>
-        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+        <a class="d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
           <i class="fa fa-user"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-menu">
           <a class="dropdown-item" href="#">account</a>
           <a class="dropdown-item" href="{% url 'website:logout' %}">logout</a>
         </div>
       </div>
     {% else %}
-      <div class="mf-nav-item dropdown">
-        <a class="nav-link dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
+      <div class="mf-nav-item dropdown order-1 order-sm-2">
+        <a class="dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
           Welcome, Guest!
         </a>
-        <a class="nav-link d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
+        <a class="d-sm-none" href="#" id="userdropdown" data-toggle="dropdown">
           <i class="fa fa-user"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-right" id="login-dropdown-center">
           <a class="dropdown-item" href="{% url 'website:login' %}">login</a>
           <a class="dropdown-item" href="#">register</a>
         </div>
