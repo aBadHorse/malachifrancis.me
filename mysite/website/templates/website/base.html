@@ -46,14 +46,22 @@
       <ul class="navbar-nav">
         {% block nav %}
           {% for option in nav_options %}
-            <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}">
-              <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
-            </li>
+            {% if option.perm_req > 1 %}
+              {% if User.is_authenticated and User.perm >= option.perm_req %}
+                <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}" style="color:red;">
+                  <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
+                </li>
+              {% endif %}
+            {% else %}
+              <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}">
+                <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
         {% endblock %}
       </ul>
     </div>
-    {% if user.is_authenticated %}
+    {% if User.is_authenticated %}
       <div class="mf-nav-item dropdown order-1 order-sm-2">
         <a class="dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
           Welcome, {{ user.username }}!

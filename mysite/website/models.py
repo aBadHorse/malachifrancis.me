@@ -22,6 +22,7 @@ class NavOption(models.Model):
 class MenuOption(models.Model):
     category = models.ForeignKey('NavOption', on_delete=models.PROTECT)
     name = models.CharField(max_length=15, verbose_name='display name')
+    path = models.CharField(max_length=127, verbose_name='URL pattern')
     position = models.IntegerField()
     perm_req = models.IntegerField(verbose_name='permission level required')
 

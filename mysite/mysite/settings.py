@@ -103,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'website.User'
+
 LOGIN_REDIRECT_URL = 'website:home'
 
 # Internationalization

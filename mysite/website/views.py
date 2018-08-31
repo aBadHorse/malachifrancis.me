@@ -1,8 +1,9 @@
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.views import View
 from django.views.generic import CreateView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 
 from .models import Content, NavOption, MenuOption, User
 from .forms import LoginForm, RegisterUserForm
@@ -55,6 +56,26 @@ class MusicView(BaseView):
     menu_options = MenuOption.objects.filter(category__name='music').order_by('position')
     page_style = 'music.min.css'
     page_title = 'music'
+
+
+class LoginUserView(View):
+    template_name = 'website/login.html'
+    def post(self, request):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            raw_password = form.cleaned_data.get('user_password')
+            user_name = form.cleaned_data.get('user_name')
+            user = authenticate(username=user_name, password=raw_password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/')
+            else:
+                return HttpResponseRedirect("invalid")
+
+    def get(self, request):
+        form = LoginForm()
+        return render(request, self.template_name, {'form': form})
 
 
 class RegisterUserView(CreateView):
