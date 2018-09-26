@@ -22,7 +22,7 @@
   <link rel="stylesheet" type="text/css"
       href="{% static '/website/styles/base.min.css' %}">
   <link rel="stylesheet" type="text/css"
-      href="{% static '/website/styles/'|add:page_style %}"
+      href="{% static '/website/styles/'|add:page_style %}">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
         {% block nav %}
           {% for option in nav_options %}
             {% if option.perm_req > 1 %}
-              {% if User.is_authenticated and User.perm >= option.perm_req %}
+              {% if user.is_authenticated and user.perm >= option.perm_req %}
                 <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}" style="color:red;">
                   <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
                 </li>
@@ -61,7 +61,7 @@
         {% endblock %}
       </ul>
     </div>
-    {% if User.is_authenticated %}
+    {% if user.is_authenticated %}
       <div class="mf-nav-item dropdown order-1 order-sm-2">
         <a class="dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
           Welcome, {{ user.username }}!
@@ -84,7 +84,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" id="login-dropdown-center">
           <a class="dropdown-item" href="{% url 'website:login' %}">login</a>
-          <a class="dropdown-item" href="#">register</a>
+          <a class="dropdown-item" href="{% url 'website:register' %}">register</a>
         </div>
       </div>
     {% endif %}

@@ -60,6 +60,7 @@ class MusicView(BaseView):
 
 class LoginUserView(View):
     template_name = 'website/login.html'
+
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -75,7 +76,9 @@ class LoginUserView(View):
 
     def get(self, request):
         form = LoginForm()
-        return render(request, self.template_name, {'form': form})
+        nav_options = NavOption.objects.order_by('position')
+        page_style = 'forms.min.css'
+        return render(request, self.template_name, {'form': form, 'page_style': page_style, 'nav_options': nav_options})
 
 
 class RegisterUserView(CreateView):

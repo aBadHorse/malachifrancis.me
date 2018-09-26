@@ -1,6 +1,11 @@
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Register</button>
-</form>
+{% extends './base.html' %}
+{% load static %}
+
+{% block body_content %}
+  <h5 class="mf-container mx-auto">Sign up</h5>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-default">Register</button>
+  </form>
+{% endblock %}
