@@ -82,7 +82,24 @@ class LoginUserView(View):
 
 
 class RegisterUserView(CreateView):
-    model = User
-    form_class = RegisterUserForm
-    success_url = 'website:home'
     template_name = 'website/register.html'
+
+    def post(self, request):
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            raw_password = form.cleaned_data.get('user_password')
+            user_name = form.cleaned_data.get('user_name')
+            user = authenticate(username=user_name, password=raw_password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/')
+            else:
+                return HttpResponseRedirect("invalid")
+
+    def get(self, request):
+        form = RegisterUserForm()
+        nav_options = NavOption.objects.order_by('position')
+        page_style = 'forms.min.css'
+        return render(request, self.template_name, {'form': form, 'page_style': page_style, 'nav_options': nav_options})

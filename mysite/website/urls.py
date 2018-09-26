@@ -13,5 +13,6 @@ urlpatterns = [
     path('music/', MusicView.as_view(), name='music'),
     path('login/', LoginUserView.as_view(), name='login'),
     path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
-    path('register/', RegisterUserView.as_view(), name='register')
+    path('register/', RegisterUserView.as_view(), name='register'),
+    path('register/invalid', RegisterUserView.as_view())
 ]
