@@ -76,8 +76,15 @@ class LoginUserView(View):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect('/')
-            else:
-                return HttpResponseRedirect('/login')
+        context = {
+            'form': form,
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'login',
+            'form_title': 'Login',
+            'error_msg': 'User name and/or password are invalid',
+        }
+        return render(request, self.template_name, context)
 
     def get(self, request):
         context = {
@@ -104,8 +111,14 @@ class RegisterUserView(CreateView):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect('/')
-            else:
-                return HttpResponseRedirect("/register")
+        context = {
+            'form': form,
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'register',
+            'form_title': 'Register new account'
+        }
+        return render(request, self.template_name, context)
 
     def get(self, request):
         context = {
@@ -127,6 +140,14 @@ class UpdateUserView(View):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
+        context = {
+            'form': form,
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'register',
+            'form_title': 'Update account info'
+        }
+        return render(request, self.template_name, context)
 
     def get(self, request):
         user = User.objects.get(username = request.user.username)
