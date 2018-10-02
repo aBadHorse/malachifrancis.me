@@ -8,6 +8,10 @@ button.navbar-toggler {
   color: $light_text;
 }
 
+.footer-spacer {
+  height: 2.5em;
+}
+
 .mf-code {
   font-family: "Courier New", monospace;
   white-space: pre;
@@ -18,6 +22,7 @@ button.navbar-toggler {
 }
 
 .mf-container {
+  margin-top: 2em;
   background-color: $off_white;
 }
 

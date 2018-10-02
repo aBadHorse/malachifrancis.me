@@ -15,6 +15,10 @@
         <div class="container">
           <pre class="mf-content">{{ content.text }}</pre>
         </div>
+      {% elif content.embed %}
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="{{ content.embed|safe }}" allowfullscreen></iframe>
+        </div>
       {% else %}
         <p class="mf-content">{{ content.text }}</p>
       {% endif %}
@@ -25,6 +29,6 @@
     <h5 class="mf-content-header">Oops! There's nothing here right now...</h5>
     <p class="mf-content-brief">So here's some lorem for your enjoyment!</p>
     <p class="mf-content">{% lorem %}</p>
-    <p class="mf-content-footer">Ya'll come back now, ya'hear!</p>
+    <footer class="mf-content-footer">Ya'll come back now, ya'hear!</footer>
   {% endif %}
 {% endblock %}
