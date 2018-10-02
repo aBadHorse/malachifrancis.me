@@ -7,10 +7,17 @@
   <div class="card mx-auto">
     <form method="post" class="card-body">
       {% csrf_token %}
-      {{ form.non_field_errors }}
+      <div class="text-danger">
+        {% if error_msg %}
+          {{ error_msg }}
+        {% endif %}
+        {{ form.non_field_errors }}
+      </div>
       {% for field in form %}
         <div class="form-group">
-          {{ field.errors }}
+          <div class="text-danger">
+            {{ field.errors }}
+          </div>
           {{ field.label_tag }}
           {{ field }}
           {% if field.help_text %}
