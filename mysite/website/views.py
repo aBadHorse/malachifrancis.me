@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 
 from .models import Content, NavOption, MenuOption, User
-from .forms import LoginForm, RegisterUserForm
+from .forms import LoginForm, RegisterUserForm, UpdateUserForm
 
 class BaseView(View):
     nav_options = NavOption.objects.order_by('position')
@@ -58,8 +58,14 @@ class MusicView(BaseView):
     page_title = 'music'
 
 
+class ResumeView(AboutView):
+    template_name = 'website/resume.html'
+    page_style = 'pdf.min.css'
+
+
 class LoginUserView(View):
-    template_name = 'website/login.html'
+    template_name = 'website/form.html'
+
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -71,15 +77,64 @@ class LoginUserView(View):
                     login(request, user)
                     return HttpResponseRedirect('/')
             else:
-                return HttpResponseRedirect("invalid")
+                return HttpResponseRedirect('/login')
 
     def get(self, request):
-        form = LoginForm()
-        return render(request, self.template_name, {'form': form})
+        context = {
+            'form': LoginForm(),
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'login',
+            'form_title': 'Login'
+        }
+        return render(request, self.template_name, context)
 
 
 class RegisterUserView(CreateView):
-    model = User
-    form_class = RegisterUserForm
-    success_url = 'website:home'
-    template_name = 'website/register.html'
+    template_name = 'website/form.html'
+
+    def post(self, request):
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            raw_password = form.cleaned_data.get('password1')
+            user_name = form.cleaned_data.get('username')
+            user = authenticate(username=user_name, password=raw_password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/')
+            else:
+                return HttpResponseRedirect("/register")
+
+    def get(self, request):
+        context = {
+            'form': RegisterUserForm(),
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'register',
+            'form_title': 'Register new account'
+        }
+        return render(request, self.template_name, context)
+
+
+class UpdateUserView(View):
+    template_name = 'website/form.html'
+
+    def post(self, request):
+        user = User.objects.get(username = request.user.username)
+        form = UpdateUserForm(request.POST, instance = user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+
+    def get(self, request):
+        user = User.objects.get(username = request.user.username)
+        context = {
+            'form': UpdateUserForm(instance = user),
+            'page_style': 'forms.min.css',
+            'nav_options': NavOption.objects.order_by('position'),
+            'page_title': 'register',
+            'form_title': 'Update account info'
+        }
+        return render(request, self.template_name, context)

@@ -1,0 +1,13 @@
+@import 'variables.scss';
+
+.mf-content-header {
+  background-image: linear-gradient(to right, $medium_blue, $off_white);
+}
+
+.card {
+  margin-bottom: 2em;
+}
+
+div.form-group > ul {
+  color: #6c757d!important;
+}

@@ -22,17 +22,19 @@
   <link rel="stylesheet" type="text/css"
       href="{% static '/website/styles/base.min.css' %}">
   <link rel="stylesheet" type="text/css"
-      href="{% static '/website/styles/'|add:page_style %}"
+      href="{% static '/website/styles/'|add:page_style %}">
 </head>
 
 <body>
   <!--
-  {% block banner %}
-    <div class="jumbotron text-center" style="margin-bottom:0; padding-top:32px; padding-bottom:32px;">
-      <h1 class="display-1">banner</h1>
-      <h3 class="display-5" style="margin-bottom:0;"><small>placeholder</small></h3>
-    </div>
-  {% endblock %}
+  {% if page_title == 'home' %}
+    {% block banner %}
+      <div class="jumbotron text-center" style="margin-bottom:0; padding-top:32px; padding-bottom:32px;">
+        <h1 class="display-1">banner</h1>
+        <h3 class="display-5" style="margin-bottom:0;"><small>placeholder</small></h3>
+      </div>
+    {% endblock %}
+  {% endif %}
   -->
   <nav class="navbar navbar-expand-sm sticky-top mf-navbar justify-content-between">
     <a class="navbar-brand order-0 mr-sm-3" href="{% url 'website:home' %}">
@@ -47,7 +49,7 @@
         {% block nav %}
           {% for option in nav_options %}
             {% if option.perm_req > 1 %}
-              {% if User.is_authenticated and User.perm >= option.perm_req %}
+              {% if user.is_authenticated and user.perm >= option.perm_req %}
                 <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}" style="color:red;">
                   <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
                 </li>
@@ -61,7 +63,7 @@
         {% endblock %}
       </ul>
     </div>
-    {% if User.is_authenticated %}
+    {% if user.is_authenticated %}
       <div class="mf-nav-item dropdown order-1 order-sm-2">
         <a class="dropdown-toggle d-none d-sm-block" href="#" id="userdropdown" data-toggle="dropdown">
           Welcome, {{ user.username }}!
@@ -70,7 +72,7 @@
           <i class="fa fa-user"></i>
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">account</a>
+          <a class="dropdown-item" href="{% url 'website:account' %}">account</a>
           <a class="dropdown-item" href="{% url 'website:logout' %}">logout</a>
         </div>
       </div>
@@ -84,7 +86,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" id="login-dropdown-center">
           <a class="dropdown-item" href="{% url 'website:login' %}">login</a>
-          <a class="dropdown-item" href="#">register</a>
+          <a class="dropdown-item" href="{% url 'website:register' %}">register</a>
         </div>
       </div>
     {% endif %}
@@ -94,7 +96,7 @@
       <ul class="navbar-nav">
         {% for option in menu_options %}
           <li class="nav-item mf-sub-menu-item">
-            <a class="nav-link" href="/register">{{ option.name }}</a>
+            <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -103,7 +105,7 @@
     <div class="mf-hr"></div>
   {% endif %}
 
-  <div class="container mf-container" style="margin-top:30px">
+  <div class="container mf-container">
     <div class="row">
       <div class="col mf-col">
         {% block body_content %}
@@ -113,27 +115,19 @@
       </div>
     </div>
   </div>
+  <div class="footer-spacer"></div>
   <nav class="navbar navbar-expand fixed-bottom mf-footer">
     <ul class="navbar-nav mx-auto">
-      <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-      </li>
-      <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-      </li>
-      <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-      </li>
-      <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="#"><i class="fa fa-youtube"></i></a>
-      </li>
-      <li class="nav-item mf-footer-nav-item mx-auto">
-        <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
-      </li>
       <li class="nav-item mf-footer-nav-item mx-auto">
         <a class="nav-link" href="http://malachifrancis.bandcamp.com">
           <i class="fa fa-music"></i>
         </a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="https://github.com/aBadHorse"><i class="fa fa-github"></i></a>
+      </li>
+      <li class="nav-item mf-footer-nav-item mx-auto">
+        <a class="nav-link" href="https://www.linkedin.com/in/malachi-francis-463a14109"><i class="fa fa-linkedin"></i></a>
       </li>
     </ul>
   </nav>
