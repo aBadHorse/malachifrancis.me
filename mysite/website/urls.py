@@ -11,6 +11,7 @@ urlpatterns = [
     path('about/resume', ResumeView.as_view(), name='resume'),
     path('art/', ArtView.as_view(), name='art'),
     path('dev/', DevView.as_view(), name='dev'),
+    path('dev/deckalyzer', DeckalyzerView.as_view(), name='deckalyzer'),
     path('music/', MusicView.as_view(), name='music'),
     path('login/', LoginUserView.as_view(), name='login'),
     path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),

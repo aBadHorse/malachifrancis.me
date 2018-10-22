@@ -4,9 +4,12 @@ from django.views.generic import CreateView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-
+import sys, os
+#sys.path.append(os.path.join(os.path.dirname('mysite'), 'deckalyzer'))
+sys.path.append('deckalyzer')
+from deckalyzer import deckalyzer
 from .models import Content, NavOption, MenuOption, User
-from .forms import LoginForm, RegisterUserForm, UpdateUserForm
+from .forms import LoginForm, RegisterUserForm, UpdateUserForm, DeckalyzerForm
 
 class BaseView(View):
     nav_options = NavOption.objects.order_by('position')
@@ -56,6 +59,39 @@ class MusicView(BaseView):
     menu_options = MenuOption.objects.filter(category__name='music').order_by('position')
     page_style = 'music.min.css'
     page_title = 'music'
+
+class DeckalyzerView(DevView):
+    template_name = 'website/deckalyzer.html'
+
+    def get(self, request):
+        form = DeckalyzerForm()
+        context = {
+            'content_list': self.content_list,
+            'menu_options': self.menu_options,
+            'page_style': self.page_style,
+            'page_title': self.page_title,
+            'nav_options': self.nav_options,
+            'form': form
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = DeckalyzerForm(request.POST)
+        if form.is_valid():
+            deck_name = form.cleaned_data.get('deck_name')
+            deck_descr = form.cleaned_data.get('description')
+            deck_data = form.cleaned_data.get('card_list')
+            deck_record = deckalyzer.run(request.user.username, deck_name, deck_descr, deck_data)
+            context = {
+                'content_list': self.content_list,
+                'menu_options': self.menu_options,
+                'page_style': self.page_style,
+                'page_title': self.page_title,
+                'nav_options': self.nav_options,
+                'deck': deck_record
+            }
+            return render(request, self.template_name, context)
+
 
 
 class ResumeView(AboutView):

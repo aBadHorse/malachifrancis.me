@@ -39,3 +39,15 @@ class UpdateUserForm(ModelForm):
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+class DeckalyzerForm(forms.Form):
+    deck_name = forms.CharField(
+        max_length=20,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    description = forms.CharField(
+        max_length=100,
+        widget=forms.Textarea(attrs={'class': 'form-control text-area'}))
+    card_list = forms.CharField(
+        max_length=1000,
+        widget=forms.Textarea(attrs={'class': 'form-control text-area'}))
