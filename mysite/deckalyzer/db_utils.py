@@ -22,12 +22,12 @@ def find_card(con, name):
 
 def insert_card(con, card):
     sql = """
-        INSERT INTO all_cards (name, cmc, mc, type)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO all_cards (name, cmc, mc, type, images)
+        VALUES (?, ?, ?, ?, ?)
     """
     try:
         cur = con.cursor()
-        cur.execute(sql, (card.name, card.cmc, card.mc, card.type))
+        cur.execute(sql, (card.name, card.cmc, card.mc, card.type, card.images))
         con.commit()
     except:
         con.rollback()
@@ -49,7 +49,7 @@ def find_deck(con, deck_id):
 
 def find_deck_cards(con, deck):
     sql = """
-        SELECT ac.name, ac.cmc, ac.mc, ac.type, dc.count FROM deck_cards dc
+        SELECT ac.name, ac.cmc, ac.mc, ac.type, ac.images, dc.count FROM deck_cards dc
         JOIN all_cards ac ON dc.card_name = ac.name
         WHERE dc.deck_id = ?
     """
@@ -61,10 +61,11 @@ def find_deck_cards(con, deck):
             'name': r[0],
             'cmc': r[1],
             'mana_cost': r[2],
-            'type_line': r[3]
+            'type_line': r[3],
+            'images': r[4]
         }
         my_card = Card(card_data)
-        for _ in range(r[4]):
+        for _ in range(r[5]):
             deck.add_card(my_card)
 
 def insert_deck(con, deck):
@@ -102,7 +103,7 @@ def insert_deck_cards(con, deck):
     """
     cur = con.cursor()
     for card_tuple in deck.deck_cards():
-        cur.execute(sql, (card_tuple[0], deck.id, card_tuple[1]))
+        cur.execute(sql, (card_tuple['name'], deck.id, card_tuple['count']))
     con.commit()
 
 def create_tables(con):
@@ -111,7 +112,8 @@ def create_tables(con):
             name text PRIMARY KEY,
             cmc integer,
             mc text,
-            type text
+            type text,
+            images text
         )
     """
     sql2 = """

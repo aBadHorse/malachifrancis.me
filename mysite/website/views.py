@@ -60,6 +60,7 @@ class MusicView(BaseView):
     page_style = 'music.min.css'
     page_title = 'music'
 
+
 class DeckalyzerView(DevView):
     template_name = 'website/deckalyzer.html'
 

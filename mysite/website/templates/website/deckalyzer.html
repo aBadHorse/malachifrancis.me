@@ -2,10 +2,13 @@
 {% load static %}
 
 {% block body_content %}
-  Deckalyzer
+  <h3>Deckalyzer</h3>
   {% if deck %}
-    {% for card in deck.cards %}
-      <p>{{ card.name }}{{ card.mc }}</p>
+    {% for card in deck.deck_cards %}
+      <div style="display: inline-block; margin-left: 3px; margin-right: 3px;">
+        <img style="display: block; max-width: 10em;" src="{{card.image}}"/>
+        <footer style="text-align: center;">{{ card.count }}x</footer>
+      </div>
     {% endfor %}
   {% else %}
     <form method="post" class="form">

@@ -6,6 +6,11 @@ class Card(object):
         self.cmc = card_data['cmc']
         self.mc = card_data['mana_cost']
         self.type = card_data['type_line']
+        if card_data['image_uris'] is not None:
+            images_uris = card_data['image_uris']
+            self.images = images_uris['normal']
+        else:
+            self.images = card_data['images']
 
     def __str__(self):
         return self.name
@@ -31,7 +36,7 @@ class Deck(object):
         unique_cards = {cards for cards in self.cards}
         for card in unique_cards:
             count = self.cards.count(card)
-            deck_cards.append((card.name, count))
+            deck_cards.append({'name': card.name, 'image': card.images, 'count':count})
         return deck_cards
 
 

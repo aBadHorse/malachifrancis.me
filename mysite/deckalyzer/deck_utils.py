@@ -34,7 +34,9 @@ def build_deck(con, deck_list, deck):
                 'name': card_record[0],
                 'cmc': card_record[1],
                 'mana_cost': card_record[2],
-                'type_line': card_record[3]
+                'type_line': card_record[3],
+                'images': card_record[4],
+                'image_uris': None
             }
             my_card = Card(card_data)
         else:
