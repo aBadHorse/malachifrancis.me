@@ -26,16 +26,6 @@
 </head>
 
 <body>
-  <!--
-  {% if page_title == 'home' %}
-    {% block banner %}
-      <div class="jumbotron text-center" style="margin-bottom:0; padding-top:32px; padding-bottom:32px;">
-        <h1 class="display-1">banner</h1>
-        <h3 class="display-5" style="margin-bottom:0;"><small>placeholder</small></h3>
-      </div>
-    {% endblock %}
-  {% endif %}
-  -->
   <nav class="navbar navbar-expand-sm sticky-top mf-navbar justify-content-between">
     <a class="navbar-brand order-0 mr-sm-3" href="{% url 'website:home' %}">
       <i class="fa fa-home"></i>
@@ -51,12 +41,14 @@
             {% if option.perm_req > 1 %}
               {% if user.is_authenticated and user.perm >= option.perm_req %}
                 <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}" style="color:red;">
-                  <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
+                  <a class="nav-link" href="/{{ option.path }}/">{{ option.name }}</a>
                 </li>
               {% endif %}
             {% else %}
               <li class="nav-item mf-nav-item {% if page_title == option.name %}active{% endif %}">
-                <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
+              {% with 'website:'|add:option.path as option_path %}
+                <a class="nav-link" href="{% url option_path %}">{{ option.name }}</a>
+              {% endwith %}
               </li>
             {% endif %}
           {% endfor %}
@@ -96,7 +88,9 @@
       <ul class="navbar-nav">
         {% for option in menu_options %}
           <li class="nav-item mf-sub-menu-item">
-            <a class="nav-link" href="{{ option.path }}">{{ option.name }}</a>
+          {% with 'website:'|add:option.path as option_path %}
+            <a class="nav-link" href="{% url option_path %}">{{ option.name }}</a>
+          {% endwith %}
           </li>
         {% endfor %}
       </ul>

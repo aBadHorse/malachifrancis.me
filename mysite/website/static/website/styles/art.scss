@@ -23,22 +23,12 @@ body {
 }
 
 .mf-content-header {
-  color: $dark_blue;
+  color: $light_text;
   background-image: linear-gradient(to right, $light_orange, $dark_blue);
 }
 
 .mf-footer {
   background-color: $light_orange;
-  color: $dark_blue;
-}
-
-.mf-footer-nav-item > a {
-  color: $dark_blue;
-
-  &:hover {
-    color: white;
-    text-shadow: 0 0 1em;
-  }
 }
 
 .mf-hr {

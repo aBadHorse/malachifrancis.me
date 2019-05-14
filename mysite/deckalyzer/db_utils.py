@@ -1,5 +1,5 @@
 import os, sqlite3
-from objects import Card, Deck
+from .objects import Card, Deck
 
 PATH = os.path.join(os.path.dirname(__file__), 'card_db.sqlite3')
 

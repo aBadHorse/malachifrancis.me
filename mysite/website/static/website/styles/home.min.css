@@ -1,1 +1,13 @@
-.mf-content-header{background-image:linear-gradient(to right, #2c565d, #f8f4f7)}
+.mf-content-header {
+  color: #dcdcdd;
+  background-image: linear-gradient(to right, #2c565d, #1b282b);
+}
+
+.mf-nav-item.active > a {
+  color: white;
+  background-color: #2c565d;
+  font-weight: bold;
+  text-shadow: 0 0.05em 1.3em black;
+}
+
+/*# sourceMappingURL=home.min.css.map */

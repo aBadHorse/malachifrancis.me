@@ -1,5 +1,5 @@
-import sys
-import db_utils, deck_utils
+from . import db_utils, deck_utils
+
 
 def run(deck_creator, deck_name, deck_descr, deck_data):
     # connect to existing database or create new and then connect
@@ -21,10 +21,6 @@ def run(deck_creator, deck_name, deck_descr, deck_data):
 
     # insert cards into deck_cards table
     db_utils.insert_deck_cards(con, deck)
-
-
-    #deck_record = db_utils.find_deck(con, deck.id)
-    #db_utils.find_deck_cards(con, deck_record)
 
     con.close()
 

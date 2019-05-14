@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
 body {
-  background-color: $off_white;
+  background-color: $dark_blue;
 }
 
 button.navbar-toggler {
@@ -23,23 +23,23 @@ button.navbar-toggler {
 
 .mf-container {
   margin-top: 2em;
-  background-color: $off_white;
+  background-color: $dark_blue;
 }
 
 .mf-content {
-  color: $dark_text;
+  color: $light_text;
   padding: 0 1em 0 1em;
   text-align: justify;
 }
 
 .mf-content-brief {
-  color: $dark_text;
+  color: $light_text;
   padding: 0 1em 0 1em;
   text-align: justify;
 }
 
 .mf-content-footer {
-  color: $dark_text;
+  color: $light_text;
   padding: 0 1em 0 1em;
   font-style: italic;
   text-align: center;
@@ -52,17 +52,17 @@ button.navbar-toggler {
 }
 
 .mf-footer {
-  background-color: $dark_blue;
+  background-color: $medium_blue;
   color: $light_text;
   padding-top: 0;
   padding-bottom: 0;
 }
 
 .mf-footer-nav-item > a {
-  color: $light_text;
+  color: $dark_blue;
 
   &:hover {
-    color: $medium_blue;
+    color: white;
     text-shadow: 0 0 1em;
   }
 }

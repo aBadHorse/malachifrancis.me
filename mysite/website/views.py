@@ -1,15 +1,12 @@
-from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
+from django.shortcuts import render
 from django.views import View
 from django.views.generic import CreateView
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-import sys, os
-#sys.path.append(os.path.join(os.path.dirname('mysite'), 'deckalyzer'))
-sys.path.append('deckalyzer')
 from deckalyzer import deckalyzer
 from .models import Content, NavOption, MenuOption, User
 from .forms import LoginForm, RegisterUserForm, UpdateUserForm, DeckalyzerForm
+
 
 class BaseView(View):
     nav_options = NavOption.objects.order_by('position')
@@ -27,10 +24,10 @@ class BaseView(View):
 
 
 class AboutView(BaseView):
-    content_list = Content.objects.filter(category__name='about me').order_by('-date')
-    menu_options = MenuOption.objects.filter(category__name='about me').order_by('position')
+    content_list = Content.objects.filter(category__name='about').order_by('-date')
+    menu_options = MenuOption.objects.filter(category__name='about').order_by('position')
     page_style = 'about.min.css'
-    page_title = 'about me'
+    page_title = 'about'
 
 
 class ArtView(BaseView):
@@ -92,7 +89,6 @@ class DeckalyzerView(DevView):
                 'deck': deck_record
             }
             return render(request, self.template_name, context)
-
 
 
 class ResumeView(AboutView):
@@ -172,8 +168,8 @@ class UpdateUserView(View):
     template_name = 'website/form.html'
 
     def post(self, request):
-        user = User.objects.get(username = request.user.username)
-        form = UpdateUserForm(request.POST, instance = user)
+        user = User.objects.get(username=request.user.username)
+        form = UpdateUserForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
@@ -187,9 +183,9 @@ class UpdateUserView(View):
         return render(request, self.template_name, context)
 
     def get(self, request):
-        user = User.objects.get(username = request.user.username)
+        user = User.objects.get(username=request.user.username)
         context = {
-            'form': UpdateUserForm(instance = user),
+            'form': UpdateUserForm(instance=user),
             'page_style': 'forms.min.css',
             'nav_options': NavOption.objects.order_by('position'),
             'page_title': 'register',

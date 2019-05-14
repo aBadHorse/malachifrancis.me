@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Card(object):
     def __init__(self, card_data):
         self.name = card_data['name']

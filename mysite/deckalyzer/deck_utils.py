@@ -1,7 +1,7 @@
 import requests, os
 from time import sleep
-from objects import Card, Deck
-import db_utils
+from .objects import Card, Deck
+from . import db_utils
 
 # opens file containing deck data
 def get_deck_data():

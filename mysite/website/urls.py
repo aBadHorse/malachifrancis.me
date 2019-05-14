@@ -1,7 +1,7 @@
 from django.urls import path
+from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from . import views
-from website.views import *
+from .views import *
 
 app_name = 'website'
 urlpatterns = [
@@ -14,7 +14,7 @@ urlpatterns = [
     path('dev/deckalyzer', DeckalyzerView.as_view(), name='deckalyzer'),
     path('music/', MusicView.as_view(), name='music'),
     path('login/', LoginUserView.as_view(), name='login'),
-    path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    path('logout/', auth_views.LogoutView, {'next_page': '/'}, name='logout'),
     path('register/', RegisterUserView.as_view(), name='register'),
     path('account/', UpdateUserView.as_view(), name='account'),
 ]
